@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js/css/estilos.css">
+    <title>Document</title>
+    <script src="js/classes.js"></script>
+
+    <script src="js/codigo.js"></script>
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="cabezal" class="clearfix">
+            <img id="logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Commons-logo.svg/1524px-Commons-logo.svg.png"
+                alt="logo" />
+            <ul id="navPrincipal">
+                <li id="btnSeccionAlquilar" class="seccion">
+                    <a>Alquilar</a>
+                </li>
+                <li id="btnSeccionMisMaquinas" class="seccion">
+                    <a>Mis máquinas</a>
+                </li>
+                <li id="btnSeccionMisAlquileres" class="seccion">
+                    <a>Mis alquileres</a>
+                </li>
+                <li id="btnSeccionAprobacion" class="seccion">
+                    <a>Usuarios y pendientes</a>
+                </li>
+                <li id="btnSeccionStock" class="seccion">
+                    <a>Stock</a>
+                </li>
+                <li id="btnSeccionInforme" class="seccion">
+                    <a>Informe de Máquinas</a>
+                </li>
+                <li id="btnSeccionLogin" class="seccion">
+                    <a>Salir</a>
+                </li> 
+            </ul>
+        </div>
+
+        <!-- Login -->
+        <div id="seccionLogin" class="seccionLogin admin usuario">
+            <h1>Iniciar Sesion</h1>
+            <label for="txtUsuario">Usuario: </label>
+            <input type="text" id="txtUsuario" placeholder="Ingesar usuario...">
+            <br><br>
+            <label for="txtPassword">Contraseña: </label>
+            <input type="password" id="txtPassword" placeholder="Ingresar contraseña...">
+            <br><br>
+            <input type="button" value="Iniciar sesion" id="btnIniciarSesion">
+            <input type="button" value="Registrarse" id="btnRegistrarse"><br>
+            <p id="pMsgErrLogin"></p>
+            <p id="intentosLogin"></p>
+        </div>
+
+        <!-- Registro -->
+        <div id="seccionRegistro" class="seccionRegistro admin usuario">
+
+            <h1>Registrarse</h1>
+
+            <label for="txtIngNombre">Nombre: </label>
+            <input type="text" id="txtIngNombre" placeholder="Ingresar nombre...">
+            <br><br>
+            <label for="txtIngApellido">Apellido: </label>
+            <input type="text" id="txtIngApellido" placeholder="Ingresar apellido...">
+            <br><br>
+            <label for="txtIngUsuario">Usuario: </label>
+            <input type="text" id="txtIngUsuario" placeholder="Ingresar usuario...">
+            <br><br>
+            <label for="txtIngPsw">Contraseña: </label>
+            <input type="text" id="txtIngPsw" placeholder="Ingresar contraseña...">
+            <br><br>
+            <label for="txtIngPswConfirm">Repita su contraseña: </label>
+            <input type="text" id="txtIngPswConfirm" placeholder="Ingresar contraseña...">
+            <br><br>
+            <label for="txtTarjeta">Ingresar nro. de tarjeta de crédito: </label>
+            <input type="text" id="txtTarjeta" placeholder="xxxx-xxxx-xxxx-xxxx...">
+            <br><br>
+            <label for="txtCVC">CVC: </label>
+            <input type="text" id="txtCVC" placeholder="xxx...">
+            <br><br>
+            <input type="button" value="Crear usuario" id="btnCrearUsuario">
+            <input type="button" value="Volver a Login" id="btnVolverLogin">
+            <br><br>
+            <p id="pMsgErrRegistro"></p>
+
+        </div>
+
+        <!-- Alquiler de instancias -->
+        <div id="seccionAlquilar" class="seccionAlquilar usuario">
+            <h1>Alquilar</h1>
+            <label for="slcInstanciaTipo">Tipo de instancia:</label>
+            <select id="slcInstanciaTipo">
+                <option value="x">Seleccione una opción</option>
+                <option value="c7S">c7.small</option>
+                <option value="c7M">c7.medium</option>
+                <option value="c7L">c7.large</option><br>
+                <option value="r7S">r7.small</option><br>
+                <option value="r7M">r7.medium</option><br>
+                <option value="r7L">r7.large</option><br>
+                <option value="i7M">i7.medium</option><br>
+                <option value="i7L">i7.large</option><br>
+            </select>
+
+
+            <input type="button" value="Alquilar" id="btnAlquilar">
+            <p id="pMsgErrAlquilar"></p>
+        </div>
+
+        <!-- Lista de instancias -->
+        <div id="seccionMisMaquinas" class="seccionMisMaquinas usuario">
+            <h1>Mis Máquinas</h1>
+
+            <select id="slcFiltroInstancias">
+                <option value="Todas">Todas las instancias</option>
+                <option value="A">Apagadas</option>
+                <option value="E">Encendidas</option>
+            </select>
+            <input type="button" value="Cargar máquinas" id="btnCargarMaquinas">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Tipo de instancia</th>
+                        <th>Estado</th>
+                        <th>Veces iniciada</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tblMaquinas"></tbody>
+            </table>
+        </div>
+
+        <!-- Máquinas alquiladas -->
+        <div id="seccionMisAlquileres" class="seccionMisAlquileres usuario">
+            <h1>Costo total alquileres:</h1>
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>Tipo de instancia</th>
+                        <th>Costo por encendido</th>
+                        <th>Total de veces encendidas</th>
+                        <th>Costo total</th>
+                    </tr>
+                </thead>
+                <tbody id="tblAlquileres"></tbody>
+            </table>
+        </div>
+
+        <!-- Aprobacion de pendientes y bloqueo de usuarios -->
+        <div id="seccionAprobacion" class="seccionAprobacion admin">
+            <h1>Usuarios:</h1>
+            <table border="">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Estado</th>
+                        <th>Aprobar</th>
+                        <th>Bloquear</th>
+                    </tr>
+                </thead>
+                <tbody id="tblUsuarios"></tbody>
+            </table>
+        </div>
+
+        <!-- Modificar stock -->
+        <div id="seccionStock" class="seccionStock admin">
+            <h1>Modificar Stock</h1>
+            <p id="pMsgStockInfo"></p><br><br>
+            <label for="slcInstanciaTipoStock">Tipo de instancia:</label>
+            <select id="slcInstanciaTipoStock">
+                <option value="Sx">Seleccione una opción</option>
+                <option value="Sc7S">c7.small</option>
+                <option value="Sc7M">c7.medium</option>
+                <option value="Sc7L">c7.large</option><br>
+                <option value="Sr7S">r7.small</option><br>
+                <option value="Sr7M">r7.medium</option><br>
+                <option value="Sr7L">r7.large</option><br>
+                <option value="Si7M">i7.medium</option><br>
+                <option value="Si7L">i7.large</option><br>
+            </select>
+            <label for="txtStock">Nuevo Stock:</label>
+            <input type="text" id="txtStock"><br>
+            <input type="button" value="Actualizar Stock" id="btnStock">
+            <p id="pMsgErrModStock"></p><br><br>
+        </div>
+
+        <!-- Informe de máquinas virtuales -->
+        <div id="seccionInforme" class="seccionInforme admin">
+            <h1>Informe de máquinas:</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Tipo de instancia</th>
+                        <th>Cantidad</th>
+                        <th>Ingreso total</th>
+                    </tr>
+                </thead>
+                <tbody id="tblInforme"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
